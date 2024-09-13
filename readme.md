@@ -50,8 +50,12 @@ Caso você tenha experiencia e deseje utilizar a aplicação de forma conteineri
 este comando ira construir e executar o container em modo desanexada, e seu terminal continua livre para utilização.
 
 Com o docker as portas são diferentes:
+
 http://localhost:3000/  - para frontend
+
 http://localhost:8080/ - para backend
+
+caso tenha algum erro na utilização com docker, por favor entre em contato para correção imediata!
 
 ## API
 a utilização da api é bem simples e ela possui 7 endpoint dos quais são:
