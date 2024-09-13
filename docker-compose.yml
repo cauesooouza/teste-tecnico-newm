@@ -16,5 +16,7 @@ services:
       dockerfile: Dockerfile
     ports:
       - "8080:8080"
+    volumes:
+      - ./Backend/LocalDatabase.db:/app/LocalDatabase.db
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
