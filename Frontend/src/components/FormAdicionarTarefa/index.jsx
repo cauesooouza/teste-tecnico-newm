@@ -13,14 +13,12 @@ export function FormAdicionarTarefa({ closeForm }) {
 
             API.post('/new', formValues)
                 .then((response) => console.log(response))
-                .catch((error) => console.error(error));
-
-            closeForm()
-
-            window.location.reload();
+                .catch((error) => console.error(error))
+                .finally(() => {
+                    closeForm()
+                    window.location.reload()
+                });
         }
-
-
     };
 
     return (
@@ -32,7 +30,7 @@ export function FormAdicionarTarefa({ closeForm }) {
 
             <Form.Group className="mb-3" controlId="Description">
                 <Form.Label>Descrição</Form.Label>
-                <Form.Control type="text" name="description" placeholder="Escreva uma descrição da sua tarefa..." />
+                <Form.Control required type="text" name="description" placeholder="Escreva uma descrição da sua tarefa..." />
             </Form.Group>
 
             <Form.Group className="mb-3" controlId="Status">

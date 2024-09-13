@@ -27,15 +27,15 @@ function App() {
       "path": "/status"
     }]
 
-    API.patch(`/update/${taskId}`, data).catch((error) => console.error(error));
-
-    window.location.reload();
+    API.patch(`/update/${taskId}`, data)
+      .catch((error) => console.error(error))
+      .finally(()=> window.location.reload());
   };
 
   const handleDelete = (taskId) => {
-    API.delete(`/delete/${taskId}`).catch((error) => console.error(error));
-
-    window.location.reload();
+    API.delete(`/delete/${taskId}`)
+      .catch((error) => console.error(error))
+      .finally(() => window.location.reload());
   };
 
   const handleSearch = (e) => {
