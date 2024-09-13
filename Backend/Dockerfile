@@ -23,7 +23,6 @@ WORKDIR "/src/."
 RUN dotnet build "./To-Do List.csproj" -c $BUILD_CONFIGURATION -o /app/build
 
 # Execute as migrations antes de publicar
-RUN dotnet-ef migrations add Initialmigration
 RUN dotnet-ef database update
 
 # Etapa publish
