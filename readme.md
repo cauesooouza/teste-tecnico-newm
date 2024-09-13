@@ -71,19 +71,12 @@ Este permite criação de uma nova tarefa, aceitando o seguinte esquema:
  5. PUT `/task/update/{id}` - Atualiza uma tarefa seguindo mesmo esquema de da criação.
  6. PATCH `/task/update/{id}` - Atualiza um ou mais recursos de uma tarefa seguindo o esquema:
 ```json
-// exemplo para um recurso, alterando o titulo
 [
 	{
-	// especificação operação ira fazer
 	  "op": "replace",
-	// qual recurso quer alterar
 	  "path": "/title",
-	// valor que ira substituir o antigo
 	  "value": "novo titulo"
 	}
 ]
-// para atualizar mais de um recurso
-// só inserir mais objeto igual a este
-// alterando os campos da forma necessaria
 ```
  7. DELETE `/task/delete/{id}` - Apaga uma tarefa.
