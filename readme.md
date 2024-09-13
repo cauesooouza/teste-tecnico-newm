@@ -3,7 +3,7 @@
 Projeto construido com carinho para provar habilidades como desenvolvedor fullstack utilizando .NET e react.
 
 
-## Requisitos
+## Requisito mínimo
 - .NET 8.0
 - Node.js
 
@@ -44,18 +44,14 @@ http://localhost:5173/
 
 
 ## Executando com o docker
-Caso você tenha experiencia e deseje utilizar a aplicação de forma conteinerizada, certifique-se que você tenha o docker instalado, navegue ate a pasta e execute o comando:
+Caso você tenha experiencia e deseje utilizar a aplicação com docker, certifique-se que você o tenha instalado, navegue ate a pasta e execute o comando:
 ` docker-compose up --build -d `
 
 este comando ira construir e executar o container em modo desanexada, e seu terminal continua livre para utilização.
 
 Com o docker as portas são diferentes:
-
 http://localhost:3000/  - para frontend
-
 http://localhost:8080/ - para backend
-
-caso tenha algum erro na utilização com docker, por favor entre em contato para correção imediata!
 
 ## API
 a utilização da api é bem simples e ela possui 7 endpoint dos quais são:
