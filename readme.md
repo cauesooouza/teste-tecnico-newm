@@ -1,82 +1,126 @@
-# To-do App
+# To-Do App | Full-stack com .NET e React
 
-Projeto construido com carinho para provar habilidades como desenvolvedor fullstack utilizando .NET e react.
+## Sobre o Projeto
 
+Este é um projeto full-stack de uma aplicação de lista de tarefas (To-Do), construído para demonstrar habilidades no desenvolvimento de uma API REST com **.NET 8** e um front-end reativo com **React**.
 
-## Requisito mínimo
-- .NET 8.0
-- Node.js
+O projeto cobre todo o ciclo de desenvolvimento, desde a criação do banco de dados com Entity Framework Core até a interface de usuário interativa, incluindo a opção de ser executado em contêineres com Docker.
 
-## Passo a passo para utilização
+## Índice
 
-### Passo 1: Clonar o repositório
-``` 
-git clone https://github.com/cauesooouza/teste-tecnico-newm.git
-cd test-tecnico-newm
-```
-caso nao tenha experiencia com git, [clique aqui e baixe como arquivo zip](https://github.com/cauesooouza/teste-tecnico-newm/archive/refs/heads/master.zip)
+-   [Funcionalidades](#funcionalidades)
+-   [Tecnologias Utilizadas](#tecnologias-utilizadas)
+-   [Como Começar](#como-começar)
+-   [Executando com Docker](#executando-com-docker)
+-   [Documentação da API](#documentação-da-api)
 
+## Funcionalidades
 
-### Passo 2: Backend
-Ja na pasta do projeto navegue até a pasta "Backend" 
-e execute os seguintes comandos: 
-``` 
-dotnet restore 
-dotnet tool install --global dotnet-ef
-dotnet ef database update
-```
-estes comandos garante que as dependencia do projeto seja baixada, e as migrações criem o banco de dados, agora você pode iniciar o backend com o comando:
+-   **Criação de Tarefas**: Adicionar novas tarefas com título, descrição e status.
+-   **Visualização**: Listar todas as tarefas cadastradas.
+-   **Atualização**: Modificar tarefas existentes, seja o status, título ou descrição.
+-   **Exclusão**: Remover tarefas da lista.
 
-` dotnet run `
+## Tecnologias Utilizadas
 
-você pode visualizar funcionando em:
-http://localhost:5055/swagger/index.html
-este link aposta diretamente para documentação da api.
+-   **Backend**:
+    -   .NET 8
+    -   ASP.NET Core Web API
+    -   Entity Framework Core
+    -   SQLite
+-   **Frontend**:
+    -   React
+    -   Vite
+    -   Node.js
+-   **Containerização**:
+    -   Docker
+    -   Docker Compose
 
-### Passo 3: Frontend
-Volte para pasta anterior e navegue para a pasta "Frontend" e execute o comando:
-` npm i `
-seu frontend ja esta pronto para iniciar com o comando: 
-` npm run dev `
+## Como Começar
 
-você pode visualizar funcionando em:
-http://localhost:5173/
+Siga as instruções abaixo para configurar e executar o projeto em seu ambiente local.
 
+### Pré-requisitos
 
-## Executando com o docker
-Caso você tenha experiencia e deseje utilizar a aplicação com docker, certifique-se que você o tenha instalado, navegue ate a pasta e execute o comando:
-` docker-compose up --build -d `
+-   [.NET 8.0 SDK](https://dotnet.microsoft.com/download/dotnet/8.0)
+-   [Node.js](https://nodejs.org/) (versão LTS recomendada)
+-   Git
 
-este comando ira construir e executar o container em modo desanexada, e seu terminal continua livre para utilização.
+### Instalação
 
-Com o docker as portas são diferentes:
-http://localhost:3000/  - para frontend
-http://localhost:8080/ - para backend
+1.  **Clone o repositório:**
+    ```sh
+    git clone https://github.com/cauesooouza/teste-tecnico-newm.git
+    cd teste-tecnico-newm
+    ```
+    *(Caso não tenha experiência com Git, [clique aqui para baixar o projeto como arquivo ZIP](https://github.com/cauesooouza/teste-tecnico-newm/archive/refs/heads/master.zip))*
 
-## API
-a utilização da api é bem simples e ela possui 7 endpoint dos quais são:
+2.  **Configure o Backend:**
+    ```sh
+    # Navegue para a pasta do backend
+    cd Backend
 
- 1. POST /task/new 
-Este permite criação de uma nova tarefa, aceitando o seguinte esquema:
-```json
-{
-  "title": "string",
-  "description": "string",
-  "status": "not_started"
-}
-```
- 2. GET `/task/find/all` - retorna todas as tarefa
- 3. GET `/task/find/{id}` - retorna tarefa pelo ID
- 4. GET `/task/find/status` - retorna tarefa pelo status
- 5. PUT `/task/update/{id}` - Atualiza uma tarefa seguindo mesmo esquema de da criação.
- 6. PATCH `/task/update/{id}` - Atualiza um ou mais recursos de uma tarefa seguindo o esquema:
-```json
-[
-	{
-	  "op": "replace",
-	  "path": "/title",
-	  "value": "novo titulo"
-	}
-]
-```
- 7. DELETE `/task/delete/{id}` - Apaga uma tarefa.
+    # Restaura as dependências do projeto
+    dotnet restore
+
+    # Instala a ferramenta de linha de comando do Entity Framework
+    dotnet tool install --global dotnet-ef
+
+    # Aplica as migrações para criar e configurar o banco de dados
+    dotnet ef database update
+    ```
+
+3.  **Configure o Frontend:**
+    ```sh
+    # Volte para a raiz e navegue para a pasta do frontend
+    cd ../Frontend
+
+    # Instala as dependências
+    npm install
+    ```
+
+### Executando a Aplicação
+
+Você precisará de dois terminais abertos para executar o backend e o frontend simultaneamente.
+
+-   **Terminal 1: Iniciar o Backend**
+    ```sh
+    cd Backend
+    dotnet run
+    ```
+    A API estará disponível e documentada via Swagger em: `http://localhost:5055/swagger/index.html`
+
+-   **Terminal 2: Iniciar o Frontend**
+    ```sh
+    cd Frontend
+    npm run dev
+    ```
+    A aplicação estará acessível em: `http://localhost:5173/`
+
+## Executando com Docker
+
+Se você possui Docker e Docker Compose instalados, pode construir e executar a aplicação de forma isolada com um único comando.
+
+1.  Na pasta raiz do projeto, execute:
+    ```sh
+    docker-compose up --build -d
+    ```
+    O comando irá construir as imagens e iniciar os contêineres em modo `detached` (-d), liberando seu terminal.
+
+2.  Acesse as seguintes URLs:
+    -   **Frontend**: `http://localhost:3000/`
+    -   **Backend (Swagger)**: `http://localhost:8080/swagger/index.html`
+
+## Documentação da API
+
+A API segue os padrões REST e possui os seguintes endpoints para manipulação de tarefas:
+
+| Método | Endpoint                    | Descrição                                         | Corpo (Exemplo)                                                                    |
+| :----- | :-------------------------- | :------------------------------------------------ | :--------------------------------------------------------------------------------- |
+| `POST` | `/task/new`                 | Cria uma nova tarefa.                             | `{"title": "Minha Tarefa", "description": "Descrição...", "status": "not_started"}` |
+| `GET`  | `/task/find/all`            | Retorna uma lista com todas as tarefas.           | N/A                                                                                |
+| `GET`  | `/task/find/{id}`           | Retorna uma tarefa específica pelo seu ID.        | N/A                                                                                |
+| `GET`  | `/task/find/status?s={val}` | Retorna tarefas filtradas por status.             | N/A                                                                                |
+| `PUT`  | `/task/update/{id}`         | Atualiza todos os campos de uma tarefa.           | `{"title": "Título Atualizado", "description": "...", "status": "in_progress"}`     |
+| `PATCH`| `/task/update/{id}`         | Atualiza um ou mais campos de uma tarefa (JSON Patch). | `[{"op": "replace", "path": "/title", "value": "Novo Título"}]`                      |
+| `DELETE`| `/task/delete/{id}`         | Exclui uma tarefa pelo seu ID.                    | N/A                                                                                |
